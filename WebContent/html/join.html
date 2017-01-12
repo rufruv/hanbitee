@@ -4,8 +4,35 @@
 <meta charset="UTF-8" />
 <title>Join</title>
 <link rel="stylesheet" href="../css/hanbit.css" />
+<style>
+	#wrapper>div{border:2px solid red;}
+	#header>div{border:2px solid blue;}
+	#header{
+		position:fixed;
+		background-color:#fff;
+		height:68px;
+		zindex:2;
+		color:white;
+		}
+</style>
 </head>
-<body><div class="width_full_size" style="margin-top:50px;">
+<body>
+<div id="wrapper" class="width_full_size">
+<div id="header" class="width_full_size" style="height:100px;">
+	<div class="logo_box width_full_size text_center" style="height: 60%">
+	<a href="index.html"><img src="../images/index/index_logo.png" style="margin:10px 0 0 40px;"></a>
+	</div>
+	<div class="gnb width_full_size text_center" style="height: 30%">
+	<ul style="color:black; margin-top: -8px; font-size: 15px;">
+		<li style="display: inline;"><a href="join.html" class="text_no_underline"><button class="button5" style="width:100px; height: 40px;">회원가입</button></a></li>
+		<li style="display: inline;"><a href="login.html" class="text_no_underline"><button class="button5" style="width:100px; height: 40px;">로그인</button></a></li>
+		<li style="display: inline;"><a href="board.html" class="text_no_underline"><button class="button5" style="width:100px; height: 40px;">자유게시판</button></a></li>
+	</ul>
+	</div>
+</div>
+<div style="height: 100px;"></div>
+<div id="container" class="width_full_size" style="height:800px;">
+<div class="width_full_size" style="margin-top:50px;">
 	<form action="" class="margin_center" style="width:500px;">
 		<table class="width_full_size table_default">
 			<tr>
@@ -101,6 +128,10 @@
 				</td>
 			</tr>
 		</table>
-	</form></div>
+	</form>
+	</div>
+	</div>
+<div id="footer" class="width_full_size" style="height:100px;">footer</div>
+</div>
 </body>
 </html>

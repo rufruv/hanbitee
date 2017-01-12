@@ -2,48 +2,73 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Detail</title>
 <link rel="stylesheet" href="../css/hanbit.css" />
+<style>
+	#wrapper>div{border:2px solid red;}
+	#header>div{border:2px solid blue;}
+	#header{
+		position:fixed;
+		background-color:#fff;
+		height:68px;
+		zindex:2;
+		color:white;
+		}
+</style>
 </head>
 <body>
-<div style="margin-top:100px;">
-	<table class="table_default margin_center" style="width:410px;">
+<div id="wrapper" class="width_full_size">
+<div id="header" class="width_full_size" style="height:100px;">
+	<div class="logo_box width_full_size text_center" style="height: 60%">
+	<a href="index.html"><img src="../images/index/index_logo.png" style="margin:10px 0 0 40px;"></a>
+	</div>
+	<div class="gnb width_full_size text_center" style="height: 30%">
+	<ul style="color:black; margin-top: -8px; font-size: 15px;">
+		<li style="display: inline;"><a href="join.html" class="text_no_underline"><button class="button5" style="width:100px; height: 40px;">회원가입</button></a></li>
+		<li style="display: inline;"><a href="login.html" class="text_no_underline"><button class="button5" style="width:100px; height: 40px;">로그인</button></a></li>
+		<li style="display: inline;"><a href="board.html" class="text_no_underline"><button class="button5" style="width:100px; height: 40px;">자유게시판</button></a></li>
+	</ul>
+	</div>
+</div>
+<div style="height: 100px;"></div>
+<div id="container" class="width_full_size" style="height:800px;">
+<div>
+	<table class="table_default margin_center" style="width:377px; font-size: 14px; margin-top:50px;">
 		<tr>
-			<td colspan="3"class="text_right"><span><a href="admin.html" class="text_no_underline">목록으로</a></span></td>
+			<td colspan="3"class="text_right"><span><a href="admin.html" class="text_no_underline">To List ▶</a></span></td>
 		</tr>
 		<tr>
-			<td rowspan="3" style="width:210px; height:210px"><img src="../images/doc_img.png" style="width:210px; height:210px" class="margin_center"/></td>
-			<td style="height:50px"> ID</td>
-			<td>00601</td>
+			<td rowspan="3" style="width:150px; height:150px"><img src="../images/doc_img.png" style="width:150px; height:150px" class="margin_center"/></td>
+			<td style="height:50px; padding-left:10px;">의사 ID</td>
+			<td style="height:50px; padding-left:10px;">00601</td>
 			
 		</tr>
 		<tr>
-			<td style="height:50px"> 전공</td>
-			<td style="height:50px"> 내과</td>
+			<td style="height:50px; padding-left:10px;">전 공</td>
+			<td style="height:50px; padding-left:10px;">내 과</td>
 		</tr>
 		<tr>
-			<td style="height:50px"> 성별</td>
-			<td style="height:50px"> M</td>
+			<td style="height:50px; padding-left:10px;">성 별</td>
+			<td style="height:50px; padding-left:10px;">M</td>
 		</tr>
 		<tr>
-			<td rowspan="2" class="text_center">안성기<span>과장</span></td>
-			<td style="height:50px"> 전화</td>
-			<td style="height:50px"> 011-222-0987</td>
+			<td rowspan="2" class="text_center"><span style="font-size: 17px;"><b>안성기</b></span> 과장</td>
+			<td style="height:50px; padding-left:10px;">전 화</td>
+			<td style="height:50px; padding-left:10px;">011-222-0987</td>
 		</tr>
 		<tr>
-			<td style="height:50px"> 이메일</td>
-			<td style="height:50px"> ask@han.com</td>
+			<td style="height:50px; padding-left:10px;">이메일</td>
+			<td style="height:50px; padding-left:10px;">ask@han.com</td>
 		</tr>
 		</table>
-		<table class="table_default margin_center">
-		<tr>
-		<td colspan="3">
-		
-		<tr>
-			<td class="event_hover"><a href="">담당환자</a></td>
-			<td class="event_hover"><a href="">담당진료</a></td>
-			<td class="event_hover"><a href="">담당차트</a></td>
-		</tr></td></tr></table>
-	
+		</div>
+		<div class="text_left margin_center" style="width:380px;">
+			<a href="/" class="text_no_underline"><button class="button5" style="width:122px; height:50px;">담당환자</button></a>
+			<a href="/" class="text_no_underline"><button class="button5" style="width:122px; height:50px;">담당진료</button></a>
+			<a href="/" class="text_no_underline"><button class="button5" style="width:122px; height:50px;">담당차트</button></a>
+		</div>
+	</div>
+<div id="footer" class="width_full_size" style="height:100px;">footer</div>
 </div>
+</body>
 </html>
