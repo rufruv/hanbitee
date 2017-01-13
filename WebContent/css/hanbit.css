@@ -2,7 +2,7 @@
 
 /* reset style */
 html, body {
-margin: 0;padding: 0;border: 0;font-size: 12px;color:#666;font-family:'Dotum', tahoma,arial,sans-serif,verdana,helvetica;
+margin: 0;padding: 0;border: 0;font-size: 12px;color:#666;font-family:'Nanum Gothic', tahoma,arial,sans-serif,verdana,helvetica;
 background: transparent;} 
 h1,h2,h3,h4,h5,h6,p{margin-top:0;}
 fieldset, img{border:0;}
@@ -65,10 +65,90 @@ a:active {color: #0408080;} /* selected link */
 .text_center{text-align: center;}
 .text_left{text-align: left;}
 .text_right{text-align: right;}
+.text_middle{vertical-align: middle;}
 .text_no_underline{text-decoration: none;}
 .text_overline{text-decoration: overline;}
 .text_line_through{text-decoration: line-through;}
 .width_full_size{width: 100%;}
+
+/* referenced by W3school */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown_content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 77px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+    z-index: 1;
+}
+
+.dropdown:hover .dropdown_content {
+    display: block;
+}
+
+.textarea_bbs {
+    width: 100%;
+    height: 150px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    font-size: 16px;
+    resize: none;
+    }
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 230px;
+    background-color: #c0c0c0;
+    color: #fff;
+    text-align: center;
+    border-radius: 4px;
+    padding: 10px 0;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
+.gallery {
+    margin: 5px;
+    border: 1px solid #ccc;
+    float: left;
+    width: 300px;
+    height: 450px;
+}
+
+.gallery :hover {
+    border: 1px solid #777;
+}
+
+.gallery img {
+    width: 100%;
+    height: 400px;
+}
+
+.gallery_desc {
+    padding: 15px;
+    text-align: center;
+}
+
 
 
 /* 나중에 jquery에 의해 제거될 대상 */
@@ -89,7 +169,7 @@ a:active {color: #0408080;} /* selected link */
    list-style-type: none;
    margin: 0;
    padding: 0;
-   overflow: hidden;
+   /* overflow: hidden; */
    background-color: #333;
 }
 
@@ -97,7 +177,7 @@ a:active {color: #0408080;} /* selected link */
    float: left;
 }
 
-.gnb li a {
+.gnb>li>a {
    display: block;
    color: white;
    text-align: center;
@@ -107,7 +187,7 @@ a:active {color: #0408080;} /* selected link */
 
 /* Change the link color to #111 (black) on hover */
 .gnb li a:hover {
-   background-color: #111;
+   background-color: #060c73;
 }
 
 .lnb {
@@ -146,7 +226,7 @@ a:active {color: #0408080;} /* selected link */
 }
 
 .button5 {background-color: #e1e1e1; color: black; border: 1px solid #e1e1e1; margin-top:5px;}
-.button5:hover {background-color: #c0c0c0; color: white; margin-top:5px;}
+.button5:hover {background-color: white; color: white; margin-top:5px;}
 
 ul.pagination {display: inline-block;padding: 0;margin: 0;}
 ul.pagination li {display: inline;}
