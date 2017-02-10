@@ -4,9 +4,9 @@ import constants.Database;
 import domain.DatabaseBean;
 import enums.Vendor;
 public class DatabaseFactory {
-	public static DatabaseBean creatDatabase(Vendor vender, String username, String password){
+	public static DatabaseBean creatDatabase(Vendor vendor, String username, String password){
 		String driver = "", url="";
-		switch(vender){
+		switch(vendor){
 		case DB2: 
 			driver=Database.DB2_DRIVER;
 			url=Database.DB2_URL;

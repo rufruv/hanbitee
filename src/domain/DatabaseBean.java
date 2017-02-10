@@ -9,6 +9,7 @@ import constants.Database;
 public class DatabaseBean {
 	private String driver, url, username, password;  // getter를 만들지 않으면 아무도 모든다.
 	private Connection connection;
+	
 	public DatabaseBean(String driver, String url, 
 			            String username, String password) {
 		this.driver = driver;                        // setter역할
