@@ -1,5 +1,13 @@
 package dao;
 
-public interface BoardDAO {
+import java.util.List;
+import domain.ArticleBean;
 
+public interface BoardDAO {
+	public int insert(ArticleBean param) throws Exception;
+	public ArticleBean selectBySeq(ArticleBean param) throws Exception;
+	public List<ArticleBean> selectByWord(ArticleBean param) throws Exception;
+	public List<ArticleBean> selectAll() throws Exception;
+	public int update(ArticleBean param) throws Exception;
+	public int delete(ArticleBean param) throws Exception;	
 }
