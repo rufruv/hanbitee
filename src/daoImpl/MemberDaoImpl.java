@@ -1,74 +1,83 @@
 package daoImpl;
 
-import java.sql.Statement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 import constants.Database;
 import dao.MemberDao;
 import domain.MemberBean;
 import enums.Vendor;
 import factory.DatabaseFactory;
 
-public class MemberDaoImpl implements MemberDao{
-	/*private static MemberDaoImpl Instance = new MemberDaoImpl();*/
-	public static MemberDaoImpl getInstance() {return new MemberDaoImpl();} // Singlecton Pattern
+public class MemberDaoImpl implements MemberDao {
+	/*private static MemberDaoImpl instance = new MemberDaoImpl();*/
+	public static MemberDaoImpl getInstance() {return new MemberDaoImpl();}
+
 	@Override
-	public void insert(MemberBean member) throws Exception {
-		String sql = String.format("INSERT INTO Member(id, name, ssn, password, profileImg, phone, email, rank) "
-										+ "VALUES('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')", 
-										   member.getId(),member.getName(),member.getPassword(),member.getProfileImg(),member.getPhone(),member.getEmail(),member.getRank());
-		Statement stmt = DatabaseFactory.creatDatabase(Vendor.ORACLE, Database.USERNAME, Database.PASSWORD).getConnection().createStatement();
-		stmt.executeUpdate(sql);
-		
+	public int insert(MemberBean member) throws SQLException {
+		/*String sql = String.format("INSERT INTO Member(id, name, ssn, password, profileImg, phone, email, rank) "
+				                 + "VALUES('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')", 
+				                   member.getId(),member.getName(),member.getSsn(),member.getPassword(),member.getProfileImg(),member.getPhone(),member.getEmail(),member.getRank());
+		Statement stmt = DatabaseFactory.creatDatabase(Vendor.ORACLE, Database.USERNAME, Database.PASSWORD)
+				                        .getConnection()
+				                        .createStatement();
+		int rowCount = stmt.executeUpdate(sql);*/
+		return DatabaseFactory.creatDatabase(Vendor.ORACLE, Database.USERNAME, Database.PASSWORD)
+                			  .getConnection()
+                			  .createStatement()
+                			  .executeUpdate(String.format("INSERT INTO Member(id, name, ssn, password, profileImg, phone, email, rank) "
+                					  					 + "VALUES('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')", 
+		                 	                               member.getId(),member.getName(),member.getSsn(),member.getPassword(),member.getProfileImg(),member.getPhone(),member.getEmail(),member.getRank()));
 	}
 
 	@Override
-	public MemberBean selectById(String id) throws Exception{
+	public MemberBean selectById(String id) throws SQLException {
 		MemberBean member = new MemberBean();
 		ResultSet set = DatabaseFactory.creatDatabase(Vendor.ORACLE, Database.USERNAME, Database.PASSWORD)
-					   .getConnection()
+				       .getConnection()
 				       .createStatement()
-				       .executeQuery(String.format("SELECT * FROM member WHERE id ='%s'", id));
-		if(set.next()){
-				member.setId(set.getString("id"));
-				member.setName(set.getString("name"));
-				member.setSsn(set.getString("ssn"));
-				member.setPassword(set.getString("password"));
-				member.setProfileImg(set.getString("profileImg"));
-				member.setPhone(set.getString("phone"));
-				member.setEmail(set.getString("email"));
-				member.setRank(set.getString("rank"));
-			}
-		
+				       .executeQuery(String.format("SELECT * FROM member WHERE id='%s'", id));
+		if (set.next()) {
+			member.setId(set.getString("id"));
+			member.setName(set.getString("name"));
+			member.setSsn(set.getString("ssn"));
+			member.setPassword(set.getString("password"));
+			member.setProfileImg(set.getString("profileImg"));
+			member.setPhone(set.getString("phone"));
+			member.setEmail(set.getString("email"));
+			member.setRank(set.getString("rank"));
+		}
 		return member;
 	}
 
-	@Override
-	public boolean login(MemberBean member) throws Exception {
+	/*@Override
+	public boolean login(MemberBean member) throws SQLException {
 		boolean check = false;
-		String sql = String.format("SELECT password FROM member WHERE id ='%s' and password = '%s'", 
-									member.getId(), member.getPassword());
-		Statement stmt = DatabaseFactory.creatDatabase(Vendor.ORACLE, Database.USERNAME, Database.PASSWORD).getConnection().createStatement();
-		ResultSet set = stmt.executeQuery(sql);
-		if(member.getPassword().equals(set.getString("password"))){
-			check = true;
-		}
+		
 		return check;
-	}
+	}*/
 
 	@Override
-	public void update(MemberBean member) throws Exception{
-		Statement stmt = DatabaseFactory.creatDatabase(Vendor.ORACLE, Database.USERNAME, Database.PASSWORD).getConnection().createStatement();
-		
-		
+	public int update(MemberBean member) throws SQLException {
+		return DatabaseFactory.creatDatabase(Vendor.ORACLE, Database.USERNAME, Database.PASSWORD)
+							  .getConnection()
+		                      .createStatement()
+		                      .executeUpdate(String.format("UPDATE Member SET "
+		                    		  					 + "password='%s', "
+		                    		  					 + "profileImg='%s', "
+		                    		  					 + "phone='%s', "
+		                    		  					 + "email='%s' "
+		                    		  					 + "WHERE id='%s'", 
+		                    		  					   member.getPassword(),member.getProfileImg(),member.getPhone(),member.getEmail()));
 	}
-
 	@Override
-	public void delete(MemberBean member) throws Exception{
-		String sql = String.format("", "");
-		
-			Statement stmt = DatabaseFactory.creatDatabase(Vendor.ORACLE, Database.USERNAME, Database.PASSWORD).getConnection().createStatement();
-			stmt.executeUpdate(sql);
-		
+	public int delete(MemberBean member) throws SQLException {
+		return DatabaseFactory.creatDatabase(Vendor.ORACLE, Database.USERNAME, Database.PASSWORD)
+							  .getConnection()
+							  .createStatement()
+							  .executeUpdate(String.format("DELETE FROM member WHERE id='%s'", member.getId()));
+
 	}
 
 }

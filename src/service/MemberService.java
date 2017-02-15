@@ -3,9 +3,10 @@ package service;
 import domain.MemberBean;
 
 public interface MemberService {
-	public void join(MemberBean member) throws Exception;
+	public int join(MemberBean member) throws Exception;
 	public MemberBean findById(String id) throws Exception;
 	public boolean login(MemberBean member) throws Exception;
-	public void change(MemberBean member) throws Exception;
-	public void remove(MemberBean member) throws Exception;
+	public boolean logout() throws Exception;
+	public int change(MemberBean member) throws Exception;
+	public int remove(MemberBean member) throws Exception;
 }
