@@ -7,11 +7,11 @@ import domain.ArticleBean;
 import service.BoardService;
 
 public class BoardServiceImpl implements BoardService{
-	private BoardDAO dao;
 	private static BoardServiceImpl instance = new BoardServiceImpl();
 	public static BoardServiceImpl getInstance() {return instance;}
-
-	public BoardServiceImpl() {
+	
+	BoardDAO dao;
+	private BoardServiceImpl() {
 		dao = BoardDAOImpl.getInstance();
 	}
 	@Override
@@ -27,7 +27,7 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
-	public List<ArticleBean> findSome(ArticleBean param) throws Exception{
+	public List<ArticleBean> findSome(String[] param) throws Exception{
 		List<ArticleBean> listSome = dao.selectByWord(param);
 		return listSome;
 	}

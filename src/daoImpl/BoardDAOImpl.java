@@ -12,7 +12,7 @@ import factory.DatabaseFactory;
 public class BoardDAOImpl implements BoardDAO{
 	public static BoardDAOImpl instance = new BoardDAOImpl(); 
 	public static BoardDAOImpl getInstance() {return instance;}
-
+	private BoardDAOImpl(){}
 	@Override
 	public int insert(ArticleBean param) throws Exception {
 		String sql = String.format("INSERT INTO Article(art_seq, id, title, contents, regdate, read_count) "
@@ -27,14 +27,15 @@ public class BoardDAOImpl implements BoardDAO{
 
 	@Override
 	public ArticleBean selectBySeq(ArticleBean param) throws Exception {
-		ArticleBean article = new ArticleBean();
+		ArticleBean article = null;  // null checking을 하기 위해서 
 		String sql = String.format("SELECT art_seq, id, title, contents, regdate, read_count FROM Article WHERE art_seq=%d", param.getSeq());
 		ResultSet rs = DatabaseFactory.creatDatabase(Vendor.ORACLE, Database.USERNAME, Database.PASSWORD)
 									  .getConnection()
 									  .createStatement()
 									  .executeQuery(sql);
 		if(rs.next()){
-			article.setSeq(rs.getString("seq"));
+			article = new ArticleBean();
+			article.setSeq(rs.getString("art_seq"));
 			article.setId(rs.getString("id"));
 			article.setTitle(rs.getString("title"));
 			article.setContents(rs.getString("contents"));
@@ -45,26 +46,23 @@ public class BoardDAOImpl implements BoardDAO{
 	}
 
 	@Override
-	public List<ArticleBean> selectByWord(ArticleBean param) throws Exception {
+	public List<ArticleBean> selectByWord(String[] param) throws Exception {
 		List<ArticleBean> listSome = new ArrayList<ArticleBean>();
-		ArticleBean article = new ArticleBean();				
-		String sql = String.format("SELECT art_seq, id, title, contents, regdate, read_count FROM Article"
-								 + "WHERE id='%s' or "
-								 + "title='%s' or "
-								 + "regdate='%s' or "
-								 + "read_count='%s'", 
-									param.getId(), param.getTitle(), param.getRegdate(), param.getReadCount());
+		ArticleBean article = null;				
+		String sql = "SELECT art_seq, id, title, contents, regdate, read_count FROM Article"
+				   + "WHERE "+param[0]+" LIKE '%"+param[1]+"%'";
 		ResultSet rs = DatabaseFactory.creatDatabase(Vendor.ORACLE, Database.USERNAME, Database.PASSWORD)
 									  .getConnection()
 									  .createStatement()
 									  .executeQuery(sql);
 		while(rs.next()){
-			article.setSeq(rs.getString("seq"));
+			article = new ArticleBean();
+			article.setSeq(rs.getString("art_seq"));
 			article.setId(rs.getString("id"));
 			article.setTitle(rs.getString("title"));
 			article.setContents(rs.getString("contents"));
 			article.setRegdate(rs.getString("regdate"));
-			article.setReadCount(rs.getString("readCount"));
+			article.setReadCount(rs.getString("read_count"));
 			listSome.add(article);
 		}
 		return listSome;
@@ -73,19 +71,20 @@ public class BoardDAOImpl implements BoardDAO{
 	@Override
 	public List<ArticleBean> selectAll() throws Exception {
 		List<ArticleBean> listAll = new ArrayList<ArticleBean>();
-		ArticleBean article = new ArticleBean();
-		String sql = String.format("SELECT art_seq, id, title, contents, regdate, read_count FROM Article");
+		ArticleBean article = null;
+		String sql = "SELECT art_seq, id, title, contents, regdate, read_count FROM Article";
 		ResultSet rs = DatabaseFactory.creatDatabase(Vendor.ORACLE, Database.USERNAME, Database.PASSWORD)
 									  .getConnection()
 									  .createStatement()
 									  .executeQuery(sql);
 		while(rs.next()){
-			article.setSeq(rs.getString("seq"));
+			article = new ArticleBean();
+			article.setSeq(rs.getString("art_seq"));
 			article.setId(rs.getString("id"));
 			article.setTitle(rs.getString("title"));
 			article.setContents(rs.getString("contents"));
 			article.setRegdate(rs.getString("regdate"));
-			article.setReadCount(rs.getString("readCount"));
+			article.setReadCount(rs.getString("read_count"));
 			listAll.add(article);
 		}
 		
