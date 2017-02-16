@@ -3,8 +3,6 @@ package daoImpl;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-
 import constants.Database;
 import dao.BoardDAO;
 import domain.ArticleBean;
@@ -96,13 +94,13 @@ public class BoardDAOImpl implements BoardDAO{
 
 	@Override
 	public int update(ArticleBean param) throws Exception {
-		String sql = String.format("UPDATE ArticleBean SET (id='%s', "
-														 + "title='%s', "
-														 + "contents='%s', "
-														 + "regdate='%s', "
-														 + "read_count='%s' "
-														 + "WHERE art_seq = %d)", 
-														   param.getId(),param.getTitle(),param.getContents(),param.getRegdate(),param.getReadCount(),param.getSeq());
+		String sql = String.format("UPDATE Article SET id='%s', "
+													+ "title='%s', "
+													+ "contents='%s', "
+												    + "regdate='%s', "
+												    + "read_count='%s' "
+												    + "WHERE art_seq = %d)", 
+													   param.getId(),param.getTitle(),param.getContents(),param.getRegdate(),param.getReadCount(),param.getSeq());
 		int rs = DatabaseFactory.creatDatabase(Vendor.ORACLE, Database.USERNAME, Database.PASSWORD)
 								.getConnection()
 								.createStatement()

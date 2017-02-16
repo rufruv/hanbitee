@@ -1,7 +1,6 @@
 package serviceImpl;
 
 import java.util.*;
-
 import dao.BoardDAO;
 import daoImpl.BoardDAOImpl;
 import domain.ArticleBean;
