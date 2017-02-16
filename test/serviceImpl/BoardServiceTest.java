@@ -14,7 +14,7 @@ public class BoardServiceTest {
 		fail("Not yet implemented");
 	}
 
-	@Test
+	@Test @Ignore
 	public void testFindOne() throws Exception{
 		ArticleBean bean = new ArticleBean();
 		bean.setSeq("1");
