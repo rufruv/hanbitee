@@ -120,8 +120,16 @@ public class BoardDAOImpl implements BoardDAO{
 	}
 	@Override
 	public int count() throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		int count = 0;
+		String sql = "SELECT COUNT(*) AS count FROM Article";
+		ResultSet rs = DatabaseFactory.creatDatabase(Vendor.ORACLE, Database.USERNAME, Database.PASSWORD)
+									  .getConnection()
+									  .createStatement()
+									  .executeQuery(sql);
+		if(rs.next()){
+			count=Integer.parseInt(rs.getString("COUNT"));
+		}
+		return count;
 	}
 
 }

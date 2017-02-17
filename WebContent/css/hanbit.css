@@ -225,6 +225,30 @@ a:active {color: #0408080;} /* selected link */
     color: white;
 }
 
+.paging {
+   list-style: none;
+   margin: 0;
+   padding: 0;
+   /* overflow: hidden; */
+   background-color: white;
+}
+
+.paging li {
+   float: left;
+}
+
+.paging>li>a {
+   display: block;
+   color: white;
+   text-align: center;
+   padding: 14px 16px;
+   text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+.gnb li a:hover {
+   background-color: white;
+}
 .button5 {background-color: #e1e1e1; color: black; border: 1px solid #e1e1e1; margin-top:5px;}
 .button5:hover {background-color: white; color: white; margin-top:5px;}
 
