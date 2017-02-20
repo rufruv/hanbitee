@@ -166,7 +166,7 @@ a:active {color: #0408080;} /* selected link */
 .policy>dd{float:left;}
 	
 .gnb {
-   list-style-type: none;
+   list-style: none;
    margin: 0;
    padding: 0;
    /* overflow: hidden; */
@@ -179,7 +179,7 @@ a:active {color: #0408080;} /* selected link */
 
 .gnb>li>a {
    display: block;
-   color: white;
+   color: black;
    text-align: center;
    padding: 14px 16px;
    text-decoration: none;

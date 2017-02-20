@@ -1,15 +1,15 @@
 package util;
 
-import dao.MemberDao;
-import daoImpl.MemberDaoImpl;
-import domain.MemberBean;
+import dao.PatientDao;
+import daoImpl.PatientDaoImpl;
+import domain.PatientBean;
 
 public class DAOTest {
 	public static void main(String[] args) {
-		MemberDao dao = new MemberDaoImpl();
-		MemberBean member = new MemberBean();
+		PatientDao dao = new PatientDaoImpl();
+		PatientBean member = new PatientBean();
 		try {
-			member = MemberDaoImpl.getInstance().selectById("hong");
+			member = PatientDaoImpl.getInstance().selectById("hong");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
