@@ -14,6 +14,6 @@ public class DAOTest {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println("회원이름 :" + member.getName());		
+		System.out.println("회원이름 :" + member.getPatName());		
 	}
 }
