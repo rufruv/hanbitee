@@ -7,34 +7,37 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class DoctorController
- */
-@WebServlet("/DoctorController")
+@WebServlet({"/doctor/main.do","/doctor/detail.do"})
 public class DoctorController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public DoctorController() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+    		throws ServletException, IOException {
+		
+    	String[] action = getAction(request.getServletPath());
+		switch(action[1]){
+		case "main":
+			request.getRequestDispatcher(action[0] + action[1] + action[2])
+			       .forward(request, response);
+			break;
+		case "detail":
+			request.getRequestDispatcher(action[0] + action[1] + action[2])
+		       	   .forward(request, response);
+			break;
+		default:break;
+		}
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+	protected String[] getAction (String path){
+		String[] action = new String[3];
+
+		action[0] = "/WEB-INF/jsp/"+path.split("\\.")[0].split("/")[1]+"/";
+		action[1] = path.split("\\.")[0].split("/")[2];
+		action[2] = ".jsp";
+		return action;
+	}
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		doGet(request, response);
 	}
 

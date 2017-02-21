@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Index</title>
-<link rel="stylesheet" href="../../css/hanbit.css" />
+<link rel="stylesheet" href="<%=application.getContextPath() %>/css/hanbit.css" />
 <style>
 [title~=cheif] {
     border: 2px solid blue;
@@ -15,7 +15,7 @@
 <div id="wrapper" class="width_full_size">
 <div id="header" class="width_full_size position_fix;" style="height:120px;">
 	<div class="logo_box width_full_size text_center" style="height: 60%">
-	<a href="../../index.html"><img src="../../images/common/index_logo.png" style="margin-top:20px;"></a>
+	<a href="../../index.html"><img src="<%=application.getContextPath() %>/images/common/index_logo.png" style="margin-top:20px;"></a>
 	</div>
 	<ul class="gnb width_full_size text_center" style="color:black; font-size: 15px; height: 38%">
 		<li><a href="../common/join.html" class="text_no_underline">회원가입</a></li>
@@ -42,35 +42,35 @@
 
 <div class="gallery">
   <a target="_blank" href="../../images/staff/doctor01.png" >
-    <img src="../../images/staff/doctor01.png" alt="Trolltunga Norway" width="300" height="200" title="cheif">
+    <img src="<%=application.getContextPath() %>/images/staff/doctor01.png" alt="Trolltunga Norway" width="300" height="200" title="cheif">
   </a>
   <div class="gallery_desc" >Add a description of the image here</div>
 </div>
 
 <div class="gallery">
   <a target="_blank" href="../../images/staff/doctor02.png">
-    <img src="../../images/staff/doctor02.png" alt="Forest" width="600" height="400">
+    <img src="<%=application.getContextPath() %>/images/staff/doctor02.png" alt="Forest" width="600" height="400">
   </a>
   <div class="gallery_desc">Add a description of the image here</div>
 </div>
 
 <div class="gallery">
   <a target="_blank" href="../../images/staff/doctor03.jpg">
-    <img src="../../images/staff/doctor03.jpg" alt="fddd" width="600" height="400">
+    <img src="<%=application.getContextPath() %>/images/staff/doctor03.jpg" alt="fddd" width="600" height="400">
   </a>
   <div class="gallery_desc">Add a description of the image here</div>
 </div>
 
 <div class="gallery">
   <a target="_blank" href="../../images/staff/doctor04.jpg">
-    <img src="../../images/staff/doctor04.jpg" alt="Mountains" width="600" height="400">
+    <img src="<%=application.getContextPath() %>/images/staff/doctor04.jpg" alt="Mountains" width="600" height="400">
   </a>
   <div class="gallery_desc">Add a description of the image here</div>
 </div>
 
 <div class="gallery">
   <a target="_blank" href="../../images/staff/doctor04.jpg">
-    <img src="../../images/staff/doctor04.jpg" alt="Mountains" width="600" height="400">
+    <img src="<%=application.getContextPath() %>/images/staff/doctor04.jpg" alt="Mountains" width="600" height="400">
   </a>
   <div class="gallery_desc">Add a description of the image here</div>
 </div>

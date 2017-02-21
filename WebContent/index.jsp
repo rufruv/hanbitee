@@ -14,15 +14,15 @@
 	<a href="index.html"><img src="images/common/index_logo.png" style="margin-top:20px;"></a>
 	</div>
 	<ul class="gnb width_full_size text_center" style="color:black; font-size: 15px; height: 38%">
-		<li><a href="<%=application.getContextPath() %>/patient/registerForm.do" class="text_no_underline">회원가입</a></li>
-		<li><a href="<%=application.getContextPath() %>/patient/loginForm.do" class="text_no_underline">로그인</a></li>
-		<li><a href="html/bbs/bbs_list.html" class="text_no_underline">자유게시판</a></li>
+		<li><a href="<%=application.getContextPath() %>/patient.do?action=move&page=registerForm" class="text_no_underline">회원가입</a></li>
+		<li><a href="<%=application.getContextPath() %>/patient.do?action=move&page=loginForm" class="text_no_underline">로그인</a></li>
+		<li><a href="<%=application.getContextPath() %>/board.do?action=move&page=main.do">자유게시판</a></li>
 		<li class="dropdown">
-			<a href="<%=application.getContextPath() %>/admin/loginForm.do" class="text_no_underline">관리자</a>
+			<a href="<%=application.getContextPath() %>/admin.do?action=move&page=loginForm.do" class="text_no_underline">관리자</a>
 			<div class="dropdown_content text_left" style="color:black">
-				<p><a href="" class="text_no_underline">의 사</a></p>
-				<p><a href="" class="text_no_underline">간호사</a></p>
-				<p><a href="" class="text_no_underline">환 자</a></p>
+				<p><a href="<%=application.getContextPath() %>/doctor.do&acton=move&page=main.do" class="text_no_underline">의 사</a></p>
+				<p><a href="<%=application.getContextPath() %>/nurse.do&acton=move&page=main.do" class="text_no_underline">간호사</a></p>
+				<p><a href="<%=application.getContextPath() %>/patient.do&acton=move&page=main.do" class="text_no_underline">환 자</a></p>
 				<p><a href="" class="text_no_underline">진 료</a></p>
 				<p><a href="" class="text_no_underline">차 트</a></p>
 			</div>

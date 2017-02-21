@@ -2,8 +2,6 @@ package daoImpl;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-
 import constants.Database;
 import dao.PatientDao;
 import domain.PatientBean;
