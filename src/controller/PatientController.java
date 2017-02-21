@@ -6,7 +6,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import util.DispatcherServlet;
 import util.Separator;
 
@@ -15,18 +14,17 @@ public class PatientController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
-			throws ServletException, IOException {
-		Separator.init(request, response);
+			       throws ServletException, IOException {
 		
+		Separator.init(request, response);
 		switch(Separator.command.getAction()){
-		case "move":DispatcherServlet.send(request, response, Separator.command);break;
+		case "move":DispatcherServlet.send(request, response);break;
 		default:
 			break;
 		}
 		
 	}
-	protected String[] getAction(String path) 
-			throws ServletException, IOException{
+	protected String[] getAction(String path) throws ServletException, IOException{
 		String[] action = new String[3];
 		String[] arr = path.split("\\.");
 		String[] arr2 = arr[0].split("/");

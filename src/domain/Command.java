@@ -16,15 +16,18 @@ import lombok.Setter;
 		this.page = page;
 		this.setView();
 	}
+	
+	public void setView(){
+		System.out.println("check: "+"/WEB-INF/jsp" + this.directory+"/"+this.page+".jsp");
+		this.view=(directory.equals("/home"))?"/WEB-INF/jsp/common/"+this.page+".jsp"
+												:"/WEB-INF/jsp" + this.directory+"/"+this.page+".jsp";
+
+	}
+	
 	@Override
 	public String process() {
 		return null;
 	}
-	public void setView(){
-		this.view="/WEB-INF/jsp" + this.directory+"/"+this.page+".jsp";
-	}
-	
-	
 
 
 

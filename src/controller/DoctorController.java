@@ -7,25 +7,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet({"/doctor/main.do","/doctor/detail.do"})
+import util.DispatcherServlet;
+import util.Separator;
+
+@WebServlet("/doctor.do")
 public class DoctorController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     protected void doGet(HttpServletRequest request, HttpServletResponse response) 
     		throws ServletException, IOException {
 		
-    	String[] action = getAction(request.getServletPath());
-		switch(action[1]){
-		case "main":
-			request.getRequestDispatcher(action[0] + action[1] + action[2])
-			       .forward(request, response);
-			break;
-		case "detail":
-			request.getRequestDispatcher(action[0] + action[1] + action[2])
-		       	   .forward(request, response);
-			break;
-		default:break;
-		}
+    	Separator.init(request, response);
+    	switch(Separator.command.getAction()){
+    	case "move": DispatcherServlet.send(request, response);break;
+    	}
 	}
 
 	protected String[] getAction (String path){
