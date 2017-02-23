@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Admin</title>
-<link rel="stylesheet" href="../css/hanbit.css" />
+<link rel="stylesheet" href="${css}/hanbit.css" />
 
 </head>
 <body>

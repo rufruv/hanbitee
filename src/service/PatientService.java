@@ -12,6 +12,7 @@ public interface PatientService {
 	public int remove(PatientBean member) throws Exception;
 	// 추가되는 로직
 	public String getBirth(String patJumin);
-	
+	public String getAge(String patJumin);
+	public PatientBean getSession();
 }
 

@@ -21,7 +21,7 @@
                   </tr>
                   <tr>
                         <td>생년월일</td>
-                        <td>${requstScope.birth}</td>
+                        <td>${requestScope.birth}</td>
                         <td>키</td>
                         <td>180cm</td>
                   </tr>
@@ -29,7 +29,7 @@
                         <td>성별</td>
                         <td>${user.patGen}</td>
                         <td>나이/몸무게</td>
-                        <td>/80kg</td>
+                        <td>${requestScope.age}/80kg</td>
                   </tr>
                   <tr>
                         <td>전화번호</td>
@@ -41,13 +41,19 @@
                         <td>주소</td>
                         <td>${user.patAddr}</td>
                         <td>주치의</td>
-                        <td>${user.docID}</td>
+                        <td>
+                        <a onclick="docDetail()" href="#">${user.docID}</a>
+                        </td>
                   </tr>
                   
-                 
-                  
-            </table>
+               </table>
+               <button onclick="getPatDetail()">클릭</button>
             </div>
-           
+           <script>
+           function docDetail(){
+        	   alert('의사ID 클릭');
+        	   location.href="${context}/doctor.do?action=move&page=detail";
+           }
+           </script>
 </div>
 <jsp:include page="../common/footer.jsp"/>

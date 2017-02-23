@@ -20,7 +20,7 @@ import util.Separator;
 public class PatientController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+	protected void service(HttpServletRequest request, HttpServletResponse response) 
 			       throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		
@@ -31,9 +31,14 @@ public class PatientController extends HttpServlet {
 		switch(Separator.command.getAction()){
 		case "move":DispatcherServlet.send(request, response);break;
 		case "mypage":
-			String birth = service.getBirth(bean.getPatJumin());
+			String birth = service.getBirth(service.getSession().getPatJumin());
 			System.out.println("생년월일: "+birth);
 			request.setAttribute("birth", birth);
+			System.out.println("SET완료!");
+			String age = service.getAge(service.getSession().getPatJumin());
+			System.out.println("나이: "+age);
+			request.setAttribute("age", age);
+			System.out.println("SET완료!");
 			DispatcherServlet.send(request, response);
 			break;
 		case "login":
