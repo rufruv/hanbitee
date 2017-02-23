@@ -7,13 +7,11 @@ import service.PatientService;
 
 public class PatientServiceImpl implements PatientService {
 	private PatientDao dao;
-	private PatientBean session;
 	private static PatientServiceImpl instance = new PatientServiceImpl();
 	public static PatientServiceImpl getInstance() {return instance;}
 	
 	public PatientServiceImpl() {
 		dao = PatientDaoImpl.getInstance();
-		session = new PatientBean();
 	}
 
 	@Override
@@ -27,20 +25,19 @@ public class PatientServiceImpl implements PatientService {
 	}
 
 	@Override
-	public boolean login(PatientBean patient) throws Exception {
-		boolean ck = false;
-		PatientBean temp = this.findById(patient.getPatID());
+	public PatientBean login(PatientBean patient) throws Exception {
+		/*
 		if(patient.getPatPass().equals(temp.getPatPass())){
 			session = temp;     
 			ck = true;
 		}else{
 			
-		}
-		return ck;
+		}*/
+		return this.findById(patient.getPatID());
 	}
 	@Override
 	public boolean logout() throws Exception {
-		session = null;
+		
 		return true;
 	}
 	@Override
@@ -51,6 +48,12 @@ public class PatientServiceImpl implements PatientService {
 	@Override
 	public int remove(PatientBean patient) throws Exception{
 		return dao.delete(patient);
+	}
+
+	@Override
+	public String getBirth(String patJumin) {
+		String temp = "";
+		return temp;
 	}
 
 	

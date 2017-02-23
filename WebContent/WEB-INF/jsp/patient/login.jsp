@@ -10,7 +10,7 @@
 </head>
 <body>
 
-<%
+<%-- <%
 	PatientService service = PatientServiceImpl.getInstance();
 	PatientBean member = new PatientBean();
 	member.setPatID(request.getParameter("id"));
@@ -27,6 +27,6 @@
 		<a href="patLoginForm.jsp">뒤로 가기</a>
 <% 	
 	} 
-%>
+%> --%>
 </body>
 </html>

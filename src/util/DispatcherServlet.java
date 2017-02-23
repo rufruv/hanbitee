@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 public class DispatcherServlet {
 	public static void send(HttpServletRequest request, 
 							HttpServletResponse response) throws ServletException, IOException{
-		request.getRequestDispatcher(Separator.command.getView())
-			   .forward(request, response);
+		request.getRequestDispatcher(Separator.command.getView()).forward(request, response);
 	}
 }

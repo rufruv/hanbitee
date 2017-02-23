@@ -18,9 +18,9 @@ import lombok.Setter;
 	}
 	
 	public void setView(){
-		System.out.println("check: "+"/WEB-INF/jsp" + this.directory+"/"+this.page+".jsp");
+		System.out.println("VIEW : "+"/WEB-INF/jsp" + this.directory+"/"+this.page+".jsp");
 		this.view=(directory.equals("/home"))?"/WEB-INF/jsp/common/"+this.page+".jsp"
-												:"/WEB-INF/jsp" + this.directory+"/"+this.page+".jsp";
+											 :"/WEB-INF/jsp" + this.directory+"/"+this.page+".jsp";
 
 	}
 	
