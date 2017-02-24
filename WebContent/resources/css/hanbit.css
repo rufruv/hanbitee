@@ -17,6 +17,10 @@ a:link {color: #808080;} /* unvisited link */
 a:visited {color: #808080;}/* visited link */ 
 a:hover {color: #808080;}/* mouse over link */
 a:active {color: #0408080;} /* selected link */ 
+
+element.style {
+    cursor: pointer;
+}
 /* customized style */
 
 .bg_color_black{background-color: black;}
