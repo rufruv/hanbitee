@@ -1,39 +1,52 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <div style="height: 70px;"></div> 
-<ul id="ulGnb" style="font-size: 15px; height: 7%">
-		<li><a id="aJoin" class="text_no_underline">회원가입</a></li>
-		<li><a id="aPatLogin" class="text_no_underline">고객:로그인</a></li>
-		<li><a id="aStaffLogin" class="text_no_underline">스탭:로그인</a></li>
-		<li><a id="aAdminLogin" class="text_no_underline">관리자:로그인</a></li>
-		<li><a id="aBoard" class="text_no_underline">자유게시판</a></li>
+<ul id="commonGnb"> 
+		<li><a>회원가입</a></li>
+		<li><a>고객:로그인</a></li>
+		<li><a>스탭:로그인</a></li>
+		<li><a>관리자:로그인</a></li>
+		<li><a>자유게시판</a></li>
 		<li class="tooltip">
 			<a href="#" class="text_no_underline">병원소개</a>
 			<span class="tooltiptext">구현되지 않은 기능입니다.</span>
 		</li>	
 </ul>
+
 <script>
-$(function() {
-	$('#ulGnb').addClass('gnb').addClass('width_full_size').addClass('text_center');
-	$('#aJoin').click(function(){
+$(function() {                 
+	var commonGnb=$('#commonGnb');
+	
+	commonGnb.addClass('gnb').addClass('width_full_size').addClass('text_center').css('font-size','15px').css('height','7%');
+	
+	commonGnb.find('li:nth-child(1)').click(function(){
 		alert('JQuery Test!');
-		location.href="${context}/patient.do?action=move&page=registerForm";
+		goPage('${context}/patient.do','move', 'registerForm');
 	});
-	document.getElementById('aPatLogin').onclick=function(){
+	
+	commonGnb.find('li:nth-child(2)').click(function(){
 		alert('aPatLogin.onclick');
-		location.href="${context}/patient.do?action=move&page=loginForm";
-	}
-	document.getElementById('aStaffLogin').onclick=function(){
-		alert('aStaffLogin.onclick');
-		location.href="${context}/patient.do?action=move&page=loginForm";
-	}
-	document.getElementById('aAdminLogin').onclick=function(){
-		alert('aAdminLogin.onclick');
-		location.href="${context}/patient.do?action=move&page=loginForm";
-	}
-	document.getElementById('aBoard').addEventListener('click', function(){
-		location.href="${context}/board.do?action=move&page=main";
+		goPage('${context}/patient.do', 'move', 'loginForm');
 	});
+
+	commonGnb.find('li:nth-child(3)').click(function(){
+		alert('aStaffLogin.onclick');
+		goPage('${context}/staff.do', 'move', 'loginForm');
+	});
+
+	commonGnb.find('li:nth-child(4)').click(function(){
+		alert('aAdminLogin.onclick');
+		goPage('${context}/admin.do', 'move', 'loginForm');
+	});
+	
+	commonGnb.find('li:nth-child(5)').click(function(){
+		alert('aBoard.onclick');
+		goPage('${context}/board.do', 'move', 'articleList');
+	});
+	/* $('#commonGnb li:nth-child(5)').addEventListener('click', function(){
+		location.href="${context}/board.do?action=move&page=main";
+	}); */
 });
+
 </script>
 
 

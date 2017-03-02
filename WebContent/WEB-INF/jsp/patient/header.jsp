@@ -4,5 +4,6 @@
 		<a href="index.html"><img src="${img}/common/index_logo.png" style="margin-top:20px;"></a>
 	</div>
 <%-- <jsp:include page="gnb.jsp"/> --%>
+
 </div>
 	

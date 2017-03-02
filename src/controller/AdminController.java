@@ -7,21 +7,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class AdminController
- */
-@WebServlet({"/admin/loginForm.do"})
+import util.DispatcherServlet;
+import util.Separator;
+
+@WebServlet("/admin.do")
 public class AdminController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-		doGet(request, response);
+protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		Separator.init(request, response);
+		switch(Separator.command.getAction()){
+		case "move":
+			DispatcherServlet.send(request, response);
+			break;
+		}
 	}
 
 }

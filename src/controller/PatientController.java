@@ -1,19 +1,18 @@
 package controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-import org.apache.catalina.tribes.MembershipService;
-
 import domain.PatientBean;
 import service.PatientService;
 import serviceImpl.PatientServiceImpl;
 import util.DispatcherServlet;
+import util.ParamMap;
 import util.Separator;
 
 @WebServlet("/patient.do")
@@ -64,25 +63,74 @@ public class PatientController extends HttpServlet {
 				e.printStackTrace();
 			}
 			break;
+		case "register":
+			String doctor=request.getParameter("doctor");
+			String nurse=request.getParameter("nurse");
+			String id=request.getParameter("id");
+			String name=request.getParameter("name");
+			String addr=request.getParameter("addr");
+			String email=request.getParameter("mail");
+			String password=request.getParameter("password");
+			String mBirth=request.getParameter("birth");
+			String month=request.getParameter("month");
+			String date=request.getParameter("date");
+			String telecom=request.getParameter("telecom");
+			String phoneNo1=request.getParameter("phoneNo1");
+			String phoneNo2=request.getParameter("phoneNo2");
+			String phoneNo3=request.getParameter("phoneNo3");
+			String gender=request.getParameter("gender");
+			String job=ParamMap.getValues(request, "job");
+			
+			ArrayList<String> list = new ArrayList<>();
+			list.add(id);
+			list.add(email);
+			list.add(password);
+			list.add(mBirth);
+			list.add(month);
+			list.add(date);
+			list.add(telecom);
+			list.add(phoneNo1);
+			list.add(phoneNo2);
+			list.add(phoneNo3);
+			list.add(gender);
+			list.add(job);
+			System.out.println(list);
+			
+			String patJumin = "";
+			if(gender.equals("male")){
+				patJumin = mBirth+month+date+"-1";
+			}else{
+				patJumin = mBirth+month+date+"-2";
+			}
+			bean.setDocID(doctor);
+			bean.setNurID(nurse);
+			bean.setPatID(id);
+			bean.setPatGen(gender);
+			bean.setPatAddr(addr);
+			bean.setPatEmail(email);
+			bean.setPatJob(job);
+			bean.setPatJumin(patJumin);
+			bean.setPatName(name);
+			bean.setPatPass(password);
+			bean.setPatPhone(phoneNo1 + "-" +phoneNo2 + "-" + phoneNo3);
+			try {
+				if(service.join(bean)==1){
+					System.out.println("===회원가입 성공===");
+					DispatcherServlet.send(request, response);
+				}else{
+					System.out.println("===회원가입 실패===");
+					Separator.command.setPage("registerForm");
+					Separator.command.setView();
+					DispatcherServlet.send(request, response);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			break;
 		default:
 			break;
 		}
 		
 	}
-	protected String[] getAction(String path) throws ServletException, IOException{
-		String[] action = new String[3];
-		String[] arr = path.split("\\.");
-		String[] arr2 = arr[0].split("/");
-		
-		action[0] = "/WEB-INF/jsp/"+arr2[1]+"/"; 
-		action[1] = arr2[2];  
-		action[2] = ".jsp";
-		
-		return action;
-	}
 	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		doGet(request, response);
-	}
 }
