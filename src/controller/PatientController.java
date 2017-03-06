@@ -98,10 +98,11 @@ public class PatientController extends HttpServlet {
 			
 			String patJumin = "";
 			if(gender.equals("male")){
-				patJumin = mBirth+month+date+"-1";
+				patJumin = mBirth.substring(2,4)+month+date+"-1";
 			}else{
-				patJumin = mBirth+month+date+"-2";
+				patJumin = mBirth.substring(2,4)+month+date+"-2";
 			}
+			System.out.println(patJumin);
 			bean.setDocID(doctor);
 			bean.setNurID(nurse);
 			bean.setPatID(id);

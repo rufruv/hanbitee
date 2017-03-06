@@ -29,7 +29,7 @@ public class BoardDAOImpl implements BoardDAO{
 	public ArticleBean selectBySeq(ArticleBean param) throws Exception {
 		ArticleBean article = null;  // null checking을 하기 위해서 
 		
-		String sql = String.format("SELECT art_seq, id, title, contents, regdate, read_count FROM Article WHERE art_seq='%s'", param.getSeq());
+		String sql = String.format("SELECT art_seq, pat_id, title, content, regdate, read_count FROM Article WHERE art_seq='%s'", param.getSeq());
 		ResultSet rs = DatabaseFactory.creatDatabase(Vendor.ORACLE, Database.USERNAME, Database.PASSWORD)
 									  .getConnection()
 									  .createStatement()
@@ -37,9 +37,9 @@ public class BoardDAOImpl implements BoardDAO{
 		if(rs.next()){
 			article = new ArticleBean();
 			article.setSeq(rs.getString("art_seq"));
-			article.setId(rs.getString("id"));
+			article.setId(rs.getString("pat_id"));
 			article.setTitle(rs.getString("title"));
-			article.setContents(rs.getString("contents"));
+			article.setContents(rs.getString("content"));
 			article.setRegdate(rs.getString("regdate"));
 			article.setReadCount(rs.getString("read_count"));
 		}
@@ -74,7 +74,7 @@ public class BoardDAOImpl implements BoardDAO{
 	public List<ArticleBean> selectAll() throws Exception {
 		List<ArticleBean> listAll = new ArrayList<ArticleBean>();
 		ArticleBean article = null;
-		String sql = "SELECT art_seq, id, title, contents, regdate, read_count FROM Article ";
+		String sql = "SELECT art_seq, pat_id, title, content, regdate, read_count FROM Article ORDER BY art_seq DESC";
 		ResultSet rs = DatabaseFactory.creatDatabase(Vendor.ORACLE, Database.USERNAME, Database.PASSWORD)
 									  .getConnection()
 									  .createStatement()
@@ -82,9 +82,9 @@ public class BoardDAOImpl implements BoardDAO{
 		while(rs.next()){
 			article = new ArticleBean();
 			article.setSeq(rs.getString("art_seq"));
-			article.setId(rs.getString("id"));
+			article.setId(rs.getString("pat_id"));
 			article.setTitle(rs.getString("title"));
-			article.setContents(rs.getString("contents"));
+			article.setContents(rs.getString("content"));
 			article.setRegdate(rs.getString("regdate"));
 			article.setReadCount(rs.getString("read_count"));
 			listAll.add(article);

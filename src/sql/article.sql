@@ -70,6 +70,10 @@ INSERT INTO Article(art_seq, pat_id, title, content, regdate, read_count)
 VALUES(art_seq.nextval, 'psong', '창공', '그들의 뜨고, 아니다', '2017-02-11', '1000000');
 INSERT INTO Article(art_seq, pat_id, title, content, regdate, read_count)
 VALUES(art_seq.nextval, 'psong', '그릇', '나는 빈그릇이요!', '2017-02-11', '1000000');
+INSERT INTO Article(art_seq, pat_id, title, content, regdate, read_count)
+VALUES(art_seq.nextval, 'psong', '텀블러', '커피믹스 맛있군 ㅋ', '2017-02-11', '1000000');
+INSERT INTO Article(art_seq, pat_id, title, content, regdate, read_count)
+VALUES(art_seq.nextval, 'psong', '내 머리속', '지우개를 찾아라', '2017-02-11', '1000000');
 -- READ ALL
 SELECT * FROM Article;
 -- READ SOME

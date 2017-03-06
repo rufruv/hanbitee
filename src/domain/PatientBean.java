@@ -8,5 +8,4 @@ import lombok.Setter;
 	@Getter @Setter
 	private String 
 	patID,nurID,docID,patPass,patName,patGen,patJumin,patAddr,patPhone,patEmail,patJob;
-
 }

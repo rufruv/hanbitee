@@ -16,18 +16,11 @@ public class PatientDaoImpl implements PatientDao {
 	public static PatientDaoImpl getInstance() {return new PatientDaoImpl();}
 
 	@Override
-	public int insert(PatientBean member) throws SQLException {
-		String sql = String.format("INSERT INTO Member(patID, nurID, docID, patPass, patName, patGen, patJumin, patAddr, patPhone, patEmail, patJob) "
-				                 + "VALUES('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')", 
-				                   member.getPatID(),member.getNurID(),member.getDocID(),member.getPatPass(),member.getPatName(),member.getPatGen(),member.getPatJumin(),member.getPatAddr(),member.getPatPhone(),member.getPatEmail(),member.getPatJob());
-		Statement stmt = DatabaseFactory.creatDatabase(Vendor.ORACLE, Database.USERNAME, Database.PASSWORD)
-				                        .getConnection()
-				                        .createStatement();
-		int rowCount = stmt.executeUpdate(sql);
+	public int insert(PatientBean patient) throws SQLException {
 		return DatabaseFactory.creatDatabase(Vendor.ORACLE, Database.USERNAME, Database.PASSWORD)
                 			  .getConnection()
                 			  .createStatement()
-                			  .executeUpdate("");
+                			  .executeUpdate(String.format("INSERT INTO Patient(pat_id,nur_id,doc_id,pat_pass,pat_name,pat_gen,pat_jumin,pat_addr,pat_phone,pat_email,pat_job) VALUES('%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s')", patient.getPatID(),patient.getNurID(),patient.getDocID(),patient.getPatPass(),patient.getPatName(),patient.getPatGen(),patient.getPatJumin(),patient.getPatAddr(),patient.getPatPhone(),patient.getPatEmail(),patient.getPatJob()));
 	}
 
 	@Override

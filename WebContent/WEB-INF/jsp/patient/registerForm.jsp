@@ -59,47 +59,47 @@
 						<option value="1980">1980년</option>
 				</select> <select name="month">
 						<option value="" selected>태어난 월 선택</option>
-						<option value="1">1월</option>
-						<option value="2">2월</option>
-						<option value="3">3월</option>
-						<option value="4">4월</option>
-						<option value="5">5월</option>
-						<option value="6">6월</option>
-						<option value="7">7월</option>
-						<option value="8">8월</option>
-						<option value="9">9월</option>
+						<option value="01">1월</option>
+						<option value="02">2월</option>
+						<option value="03">3월</option>
+						<option value="04">4월</option>
+						<option value="05">5월</option>
+						<option value="06">6월</option>
+						<option value="07">7월</option>
+						<option value="08">8월</option>
+						<option value="09">9월</option>
 						<option value="10">10월</option>
 						<option value="11">11월</option>
 						<option value="12">12월</option>
 				</select> <select name="date">
 						<option value="" selected>태어난 날짜 선택</option>
-						<option value="1">1일</option>
-						<option value="2">2일</option>
-						<option value="3">3일</option>
-						<option value="4">4일</option>
-						<option value="5">5일</option>
-						<option value="6">6일</option>
-						<option value="7">7일</option>
-						<option value="8">8일</option>
-						<option value="9">9일</option>
+						<option value="01">1일</option>
+						<option value="02">2일</option>
+						<option value="03">3일</option>
+						<option value="04">4일</option>
+						<option value="05">5일</option>
+						<option value="06">6일</option>
+						<option value="07">7일</option>
+						<option value="08">8일</option>
+						<option value="09">9일</option>
 						<option value="10">10일</option>
 				</select></p></td>
 			</tr>
 			<tr>
-				<td><p><select name="telecom" style="width:200px">
-						<option value="" selected>통신사를 선택하세요</option>
+				<td><p><select name="telecom">
+						<option value="" selected>통신사 선택</option>
 						<option value="skt">SKT</option>
 						<option value="lgt">LGT</option>
 						<option value="kt">KT</option>
-				</select> <select name="phoneNo1" style="width:200px">
-						<option value="" selected>국번을 선택하세요</option>
+				</select> <select name="phoneNo1">
+						<option value="" selected>국번 선택</option>
 						<option value="010">010</option>
 						<option value="011">011</option>
 						<option value="016">016</option>
 						<option value="017">017</option>
 						<option value="018">018</option>
 						<option value="019">019</option>
-				</select>-<input type="text" name="phoneNo2" style="width:200px"/>-<input type="text" name="phoneNo3" style="width:200px"/></p></td>
+				</select>-<input type="text" name="phoneNo2"/>-<input type="text" name="phoneNo3"/></p></td>
 			</tr>
 			<tr>
 			<!--
@@ -111,7 +111,7 @@
 					<input type="checkbox" name="job" value="staff"/>스태프<br/>
 					<input type="checkbox" name="job" value="doctor"/>의사
 					<input type="checkbox" name="job" value="nurse"/>간호사
-					<input type="checkbox" name="job" value="administrator"/>관리자<br/>
+					<input type="checkbox" name="job" value="admini"/>관리자<br/>
 				</td>
 			</tr>
 			<tr>
@@ -124,10 +124,10 @@
 					</div>
 				</td>
 			</tr>
-			<tr style="text-align:center; width:100%">
+			<tr style="text-align:center; width:100%" >
 				<td>
-					<input style="background-color: blue; color: white; width:49%; height:40px;" type="hidden" name="action" value="register" />
-					<input style="background-color: #5e6869; color: white; width:49%; height:40px;" type="hidden" name="page" value="main"/>
+					<input type="hidden" name="action" value="register" />
+					<input type="hidden" name="page" value="main"/>
 					<input style="background-color: #5e6869; color: white; width:99%; height:40px;" type="button" value="전송" name="submitBtn" />
 				</td>
 			</tr>
@@ -138,7 +138,7 @@
 <script>
 $(function() {
 	var $registerForm = $('#registerForm');
-	$registerForm.addClass('width_full_size').addClass('margin_center').css('margin-top','50px').css('height','550px').css('width','770px')
+	$registerForm.addClass('width_full_size').addClass('margin_center').css('margin-top','50px').css('height','550px').css('width','550px')
 	var tab = $registerForm.find('table');
 	tab.addClass('width_full_size').addClass('table_default')
 	

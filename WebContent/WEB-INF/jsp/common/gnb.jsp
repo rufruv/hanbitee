@@ -39,12 +39,9 @@ $(function() {
 	});
 	
 	commonGnb.find('li:nth-child(5)').click(function(){
-		alert('aBoard.onclick');
-		goPage('${context}/board.do', 'move', 'articleList');
+		alert('게시판 가기');
+		goList('${context}/board.do', 'list', 'articleList', '1');
 	});
-	/* $('#commonGnb li:nth-child(5)').addEventListener('click', function(){
-		location.href="${context}/board.do?action=move&page=main";
-	}); */
 });
 
 </script>

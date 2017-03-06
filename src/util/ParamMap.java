@@ -11,7 +11,7 @@ public class ParamMap {
 			rs+=s+",";
 		}
 		System.out.println("버퍼에 담긴 내용 :" + rs);
-		rs = rs.substring(0,values.length-1);
+		rs=rs.substring(0,rs.length()-1);
 		return rs;
 	}
 }
