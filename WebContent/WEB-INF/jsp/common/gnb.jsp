@@ -19,22 +19,22 @@ $(function() {
 	commonGnb.addClass('gnb').addClass('width_full_size').addClass('text_center').css('font-size','15px').css('height','7%');
 	
 	commonGnb.find('li:nth-child(1)').click(function(){
-		alert('JQuery Test!');
+		alert('회원가입 가기');
 		goPage('${context}/patient.do','move', 'registerForm');
 	});
 	
 	commonGnb.find('li:nth-child(2)').click(function(){
-		alert('aPatLogin.onclick');
+		alert('환자 로그인 가기');
 		goPage('${context}/patient.do', 'move', 'loginForm');
 	});
 
 	commonGnb.find('li:nth-child(3)').click(function(){
-		alert('aStaffLogin.onclick');
+		alert('스태프 로그인 가기');
 		goPage('${context}/staff.do', 'move', 'loginForm');
 	});
 
 	commonGnb.find('li:nth-child(4)').click(function(){
-		alert('aAdminLogin.onclick');
+		alert('관리자 로그인 가기');
 		goPage('${context}/admin.do', 'move', 'loginForm');
 	});
 	

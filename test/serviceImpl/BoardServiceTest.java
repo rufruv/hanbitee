@@ -42,7 +42,7 @@ public class BoardServiceTest {
 	@Test @Ignore
 	public void testList() throws Exception{
 		List<ArticleBean> list = new ArrayList<>();
-		list=service.list();
+		/*list=service.list();*/
 		assertTrue(list.get(0).getTitle().equals("1st 제목"));
 	}
 

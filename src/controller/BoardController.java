@@ -7,11 +7,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import domain.ArticleBean;
 import service.BoardService;
 import serviceImpl.BoardServiceImpl;
 import util.DispatcherServlet;
+import util.Pagination;
 import util.Separator;
 
 @WebServlet("/board.do")
@@ -21,6 +21,7 @@ public class BoardController extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Separator.init(request, response);
 		ArticleBean bean = new ArticleBean();
+		Pagination pg = new Pagination();
 		BoardService service = BoardServiceImpl.getInstance();
 		List<ArticleBean> list = new ArrayList<>();
 		switch(Separator.command.getAction()){
@@ -28,31 +29,42 @@ public class BoardController extends HttpServlet {
 			DispatcherServlet.send(request, response);
 			break;
 		case "list":
-			try {
-				list = service.list();
-				
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			String strPageNO = request.getParameter("pageNO");
-			System.out.println("화면에서 넘어온 PAGE NO :" + strPageNO);
-			int count=list.size();
-			int rowCount = 5;
-			int block = count/rowCount;
-			int pageNO = Integer.parseInt(strPageNO);
-			int pageStart=(pageNO-1)+rowCount+1;
-			int pageEnd = pageNO*rowCount;
-			int blockStart = 1;
-			int blockSize = 5;
-			int blockEnd = (blockStart-1)+blockSize;
-			
-			request.setAttribute("count", list.size());
+			System.out.println("==list==");
+			pg.setBlockSize(5);
+			pg.setRowCount(5);
+			pg.setCount(service.count());
+			pg.setPageNO(request.getParameter("pageNO"));
+			pg.setPageStart();
+			pg.setPageEnd();
+			pg.setPageCount(0);
+			int[] pageArr={pg.getPageStart(),pg.getPageEnd()};  
+			list=service.list(pageArr);
+			pg.setPageCount();
+			pg.setBlockCount();
+			pg.setBlockStart();
+			pg.setPrevBlock();
+			pg.setNextBlock();
+			pg.setBlockEnd();
+			request.setAttribute("count", pg.getAttribute()[0]);
+			System.out.println("count : "+ pg.getAttribute()[0]);
+			request.setAttribute("pageCount", pg.getAttribute()[1]);
+			System.out.println("pageCount : "+ pg.getAttribute()[1]);
+			request.setAttribute("pageNO", pg.getAttribute()[2]);
+			System.out.println("pageNO : "+ pg.getAttribute()[2]);
+			request.setAttribute("pageStart", pg.getAttribute()[3]);
+			System.out.println("pageStart : " + pg.getAttribute()[3]);
+			request.setAttribute("pageEnd", pg.getAttribute()[4]);
+			System.out.println("pageEnd : "+ pg.getAttribute()[4]);
+			request.setAttribute("blockStart", pg.getAttribute()[5]);
+			System.out.println("blockStart : " + pg.getAttribute()[5]);
+			request.setAttribute("blockEnd", pg.getAttribute()[6]);
+			System.out.println("blockEnd : "+ pg.getAttribute()[6]);
+			request.setAttribute("prevBlock", pg.getAttribute()[7]);
+			System.out.println("prevBlock : "+ pg.getAttribute()[7]);
+			request.setAttribute("nextBlock", pg.getAttribute()[8]);
+			System.out.println("nextBlock : " + pg.getAttribute()[8]);
 			request.setAttribute("list", list);
-			request.setAttribute("pageStart", pageStart);
-			request.setAttribute("pageEnd", pageEnd);
-			request.setAttribute("block", block);
-			request.setAttribute("blockStart", blockStart);
-			request.setAttribute("blockEnd", blockEnd);
+			System.out.println("list : " + list);			
 			break;
 		case "detail":
 			String seq = request.getParameter("seq");
@@ -64,7 +76,6 @@ public class BoardController extends HttpServlet {
 				
 				e.printStackTrace();
 			}
-			
 			break;
 		}
 		DispatcherServlet.send(request, response);
