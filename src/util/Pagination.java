@@ -25,11 +25,6 @@ public class Pagination {
 	}
 	public void setPageCount() {
 		this.pageCount = (count%rowCount==0)?count/rowCount:count/rowCount+1;
-		/*if(count%rowCount==0){
-			pageCount=count/rowCount;
-		}else{
-			pageCount=count/rowCount+1;
-		}*/
 	}
 	public void setBlockSize(int blockSize) {
 		this.blockSize = blockSize;
@@ -48,11 +43,6 @@ public class Pagination {
 	}
 	public void setBlockEnd() {
 		this.blockEnd = ((blockStart+rowCount-1) < pageCount)?blockStart+blockSize-1:pageCount;
-		/*if((blockStart+rowCount-1) < pageCount){
-			blockEnd=blockStart+blockSize-1;
-		}else{
-			blockEnd=pageCount;
-		}*/
 	}
 	
 	public Integer[] getAttribute(){

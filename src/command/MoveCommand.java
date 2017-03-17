@@ -17,8 +17,8 @@ public class MoveCommand extends Command implements Commandable {
 	}
 
 	@Override
-	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		
+	public void process(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
+	
 	}
 }

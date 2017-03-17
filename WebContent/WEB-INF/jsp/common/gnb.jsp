@@ -43,7 +43,6 @@ $(function() {
 		goList('${context}/board.do', 'list', 'articleList', '1');
 	});
 });
-
 </script>
 
 

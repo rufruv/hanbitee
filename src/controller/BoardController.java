@@ -12,7 +12,6 @@ import handler.PageHandler;
 import service.BoardService;
 import serviceImpl.BoardServiceImpl;
 import util.DispatcherServlet;
-import util.Pagination;
 import util.Separator;
 
 @WebServlet("/board.do")
@@ -22,8 +21,7 @@ public class BoardController extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Separator.init(request, response);
 		ArticleBean bean = new ArticleBean();
-		Pagination pg = new Pagination();
-		Map<String, String>params=new HashMap<>();
+		Map<String, String> params=new HashMap<>();
 		PageHandler handler = new PageHandler();
 		System.out.println("게시판 서블릿");
 		BoardService service = BoardServiceImpl.getInstance();
@@ -33,7 +31,6 @@ public class BoardController extends HttpServlet {
 			DispatcherServlet.send(request, response);
 			break;
 		case "list":
-			System.out.println("==list==");
 			params.put("pageNO", request.getParameter("pageNO"));
 			params.put("count", String.valueOf(service.count()));
 			handler.process(params);
@@ -43,7 +40,6 @@ public class BoardController extends HttpServlet {
 			pg.setPageNO(request.getParameter("pageNO"));
 			pg.setPageStart();
 			pg.setPageEnd();
-			pg.setPageCount(0);
 			pg.setPageCount();
 			pg.setBlockCount();
 			pg.setBlockStart();

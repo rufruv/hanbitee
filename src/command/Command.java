@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Data 
-public class Command{
+public class Command {
 	@Getter @Setter
 	protected String directory, action, page, pageNO;
 	@Getter

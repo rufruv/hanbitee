@@ -20,7 +20,6 @@ public class ListCommand extends Command implements Commandable{
 	@Override
 	public void process(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
-	
+		
 	}
-	
 }
